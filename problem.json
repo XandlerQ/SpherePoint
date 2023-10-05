@@ -1,0 +1,5 @@
+{
+	"type" : "Sphere2",
+	"dotCount" : 10,
+	"solver" : "HJ"
+}
