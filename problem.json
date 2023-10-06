@@ -1,5 +1,5 @@
 {
-	"type" : "1R",
-	"dotCount" : 4,
+	"type" : "Min",
+	"pointCount" : 20,
 	"solver" : "HJ"
 }

@@ -11,6 +11,9 @@ import java.util.Iterator;
 
 public class App extends PApplet{
     public static PApplet processingRef;
+    public static float renderRadius;
+    public static int width;
+    public static int height;
     private double epsilon = 0.000001;
     private boolean done = false;
     private boolean report = false;
@@ -20,11 +23,14 @@ public class App extends PApplet{
     Positioner positioner;
 
     public void settings() {
-        size(1000, 1000, P3D);
+        width = 500;
+        height = 500;
+        size(width, height, P3D);
     }
 
     public void setup() {
-        this.processingRef = this;
+        processingRef = this;
+        renderRadius = 150;
         background(0);
         frameRate(15);
         Gson gson = new Gson();
@@ -62,8 +68,8 @@ public class App extends PApplet{
             App.processingRef.sphereDetail(20);
             App.processingRef.stroke(Color.BLACK.getRGB(), 100);
             App.processingRef.noFill();
-            App.processingRef.translate(500, 500, 500);
-            App.processingRef.sphere(100);
+            App.processingRef.translate(width / 2, height / 2, 0);
+            App.processingRef.sphere(renderRadius);
             App.processingRef.popMatrix();
 
             ArrayList<SpherePoint> spherePoints = this.positioner.getFunction().getSpherePoints();
@@ -76,6 +82,7 @@ public class App extends PApplet{
         else {
             if (!report) {
                 System.out.println(this.positioner.getIterationCount());
+                System.out.println(this.positioner.getFunction().getValue());
                 report = true;
             }
         }

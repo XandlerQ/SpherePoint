@@ -98,7 +98,7 @@ public class SpherePoint {
         App.processingRef.pushMatrix();
         App.processingRef.sphereDetail(3);
         App.processingRef.stroke(Color.RED.getRGB());
-        App.processingRef.translate(500 + (float)(100 * getX()), 500 + (float)(100 * getY()), 500 + (float)(100 * getZ()));
+        App.processingRef.translate(App.width / 2 + (float)(App.renderRadius * getX()), App.height / 2 + (float)(App.renderRadius * getY()), (float)(App.renderRadius * getZ()));
         App.processingRef.sphere(2);
         App.processingRef.popMatrix();
     }
