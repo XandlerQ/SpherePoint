@@ -1,7 +1,7 @@
 package com.spherepoint;
 
 public class Positioner {
-    private SphereDotFunction function;
+    private SpherePointFunction function;
     private double currentStepSize;
     private double currentValue;
     private double lastValue;
@@ -15,7 +15,7 @@ public class Positioner {
         this.iterationCount = 0;
     }
 
-    Positioner(SphereDotFunction function) {
+    Positioner(SpherePointFunction function) {
         this.function = function;
         this.currentStepSize = 0;
         this.currentValue = function.getValue();
@@ -23,7 +23,7 @@ public class Positioner {
         this.iterationCount = 0;
     }
 
-    public SphereDotFunction getFunction() {
+    public SpherePointFunction getFunction() {
         return function;
     }
 
@@ -43,7 +43,7 @@ public class Positioner {
         return iterationCount;
     }
 
-    public void setFunction(SphereDotFunction function) {
+    public void setFunction(SpherePointFunction function) {
         this.function = function;
         reset();
     }
@@ -94,8 +94,8 @@ public class Positioner {
                 }
             }
             if (this.function.getClass() == NegativeMinR.class) {
-                boolean changedDots = ((NegativeMinR) this.function).setClosestDots();
-                if (changedDots) currentStepSize = Math.PI / 12;
+                boolean changedPoints = ((NegativeMinR) this.function).setClosestPoints();
+                if (changedPoints) currentStepSize = Math.PI / 12;
                 else {
                     if (!improved) currentStepSize /= 2;
                 }
@@ -134,8 +134,8 @@ public class Positioner {
             }
         }
         if (this.function.getClass() == NegativeMinR.class) {
-            boolean changedDots = ((NegativeMinR) this.function).setClosestDots();
-            if (changedDots) this.currentStepSize = Math.PI / 12;
+            boolean changedPoints = ((NegativeMinR) this.function).setClosestPoints();
+            if (changedPoints) this.currentStepSize = Math.PI / 12;
             else {
                 if (!improved) this.currentStepSize /= 2;
             }

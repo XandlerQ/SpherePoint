@@ -2,11 +2,11 @@ package com.spherepoint;
 
 import java.util.ArrayList;
 
-public abstract class SphereDotFunction {
+public abstract class SpherePointFunction {
     protected String type;
     protected int parameterCount;
 
-    SphereDotFunction() {
+    SpherePointFunction() {
         this.type = "None";
         this.parameterCount = 0;
     }
@@ -23,7 +23,7 @@ public abstract class SphereDotFunction {
         this.type = type;
     }
 
-    public abstract ArrayList<SphereDot> getSphereDots();
+    public abstract ArrayList<SpherePoint> getSpherePoints();
 
     public abstract double[] getParameters();
 

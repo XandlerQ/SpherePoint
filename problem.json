@@ -1,5 +1,5 @@
 {
-	"type" : "Sphere2",
-	"dotCount" : 10,
+	"type" : "Sphere1",
+	"dotCount" : 4,
 	"solver" : "HJ"
 }

@@ -13,10 +13,11 @@ public class App extends PApplet{
     public static PApplet processingRef;
     private double epsilon = 0.000001;
     private boolean done = false;
+    private boolean report = false;
     private String solver;
     private String type;
 
-    Positioner opti;
+    Positioner positioner;
 
     public void settings() {
         size(1000, 1000, P3D);
@@ -25,7 +26,7 @@ public class App extends PApplet{
     public void setup() {
         this.processingRef = this;
         background(0);
-        frameRate(1000);
+        frameRate(15);
         Gson gson = new Gson();
         PojoProblem problem = null;
         try {
@@ -36,43 +37,47 @@ public class App extends PApplet{
             System.out.println(exception);
         }
 
-        SphereDotFunction sphereDotFunction = null;
+        SpherePointFunction spherePointFunction = null;
         this.solver = problem.getSolver();
 
         this.type = problem.getType();
 
         switch (this.type) {
-            case "Sphere1" -> sphereDotFunction = new Sum1OverR(problem.getDotCount());
-            case "Sphere2" -> sphereDotFunction = new NegativeMinR(problem.getDotCount());
+            case "Sphere1" -> spherePointFunction = new Sum1OverR(problem.getPointCount());
+            case "Sphere2" -> spherePointFunction = new NegativeMinR(problem.getPointCount());
         }
-        this.opti = new Positioner(sphereDotFunction);
-        this.opti.setStepSize(Math.PI / 12);
+        this.positioner = new Positioner(spherePointFunction);
+        this.positioner.setStepSize(Math.PI / 12);
     }
 
     public void draw() {
         if (!this.done) {
-            background(0);
+            background(255);
             switch (this.solver) {
-                case "HJ" -> this.done = this.opti.hookeJeevesStep(this.epsilon);
-                case "GD" -> this.done = this.opti.gradientDescentOptimumStep(this.epsilon, 0.00000001);
+                case "HJ" -> this.done = this.positioner.hookeJeevesStep(this.epsilon);
+                case "GD" -> this.done = this.positioner.gradientDescentOptimumStep(this.epsilon, 0.00000001);
             }
             App.processingRef.pushMatrix();
-            App.processingRef.sphereDetail(30);
-            App.processingRef.stroke(Color.WHITE.getRGB());
+            App.processingRef.lights();
+            App.processingRef.sphereDetail(20);
+            App.processingRef.stroke(Color.BLACK.getRGB(), 100);
             App.processingRef.noFill();
             App.processingRef.translate(500, 500, 500);
             App.processingRef.sphere(100);
             App.processingRef.popMatrix();
 
-            ArrayList<SphereDot> sphereDots = this.opti.getFunction().getSphereDots();
+            ArrayList<SpherePoint> spherePoints = this.positioner.getFunction().getSpherePoints();
 
-            for (Iterator<SphereDot> iterator = sphereDots.iterator(); iterator.hasNext();) {
-                SphereDot sphereDot = iterator.next();
-                sphereDot.render();
+            for (Iterator<SpherePoint> iterator = spherePoints.iterator(); iterator.hasNext();) {
+                SpherePoint spherePoint = iterator.next();
+                spherePoint.render();
             }
         }
         else {
-            System.out.println(this.opti.getIterationCount());
+            if (!report) {
+                System.out.println(this.positioner.getIterationCount());
+                report = true;
+            }
         }
     }
 

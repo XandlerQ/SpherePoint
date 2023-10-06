@@ -2,12 +2,12 @@ package com.spherepoint;
 
 public class PojoProblem {
     private String type;
-    private int dotCount;
+    private int pointCount;
     private String solver;
 
     PojoProblem() {
         this.type = "None";
-        this.dotCount = -1;
+        this.pointCount = -1;
         this.solver = "None";
     }
 
@@ -15,8 +15,8 @@ public class PojoProblem {
         return type;
     }
 
-    public int getDotCount() {
-        return dotCount;
+    public int getPointCount() {
+        return pointCount;
     }
 
     public String getSolver() {
@@ -27,8 +27,8 @@ public class PojoProblem {
         this.type = type;
     }
 
-    public void setDotCount(int dotCount) {
-        this.dotCount = dotCount;
+    public void setPointCount(int pointCount) {
+        this.pointCount = pointCount;
     }
 
     public void setSolver(String solver) {

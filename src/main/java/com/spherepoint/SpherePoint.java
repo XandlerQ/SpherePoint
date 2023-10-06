@@ -3,23 +3,23 @@ package com.spherepoint;
 import java.awt.*;
 import java.util.Random;
 
-public class SphereDot {
+public class SpherePoint {
     private double phi;
     private double theta;
 
-    SphereDot() {
+    SpherePoint() {
         this.phi = 0;
         this.theta = 0;
     }
 
-    SphereDot(double phi, double omega) {
+    SpherePoint(double phi, double omega) {
         this.phi = phi;
         this.theta = omega;
     }
 
-    public static SphereDot randomDot() {
+    public static SpherePoint randomPoint() {
         Random random = new Random();
-        return new SphereDot(random.nextDouble() * 2 * Math.PI, random.nextDouble() * Math.PI);
+        return new SpherePoint(random.nextDouble() * 2 * Math.PI, random.nextDouble() * Math.PI);
     }
 
     public double getPhi() {
@@ -78,7 +78,7 @@ public class SphereDot {
         }
     }
 
-    public double distanseTo(SphereDot other) {
+    public double distanseTo(SpherePoint other) {
         double x = Math.sin(this.theta) * Math.cos(this.phi);
         double y = Math.sin(this.theta) * Math.sin(this.phi);
         double z = Math.cos(this.theta);
@@ -96,7 +96,7 @@ public class SphereDot {
 
     public void render() {
         App.processingRef.pushMatrix();
-        App.processingRef.sphereDetail(4);
+        App.processingRef.sphereDetail(3);
         App.processingRef.stroke(Color.RED.getRGB());
         App.processingRef.translate(500 + (float)(100 * getX()), 500 + (float)(100 * getY()), 500 + (float)(100 * getZ()));
         App.processingRef.sphere(2);
