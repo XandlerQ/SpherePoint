@@ -43,8 +43,8 @@ public class App extends PApplet{
         this.type = problem.getType();
 
         switch (this.type) {
-            case "Sphere1" -> spherePointFunction = new Sum1OverR(problem.getPointCount());
-            case "Sphere2" -> spherePointFunction = new NegativeMinR(problem.getPointCount());
+            case "1R" -> spherePointFunction = new Sum1OverR(problem.getPointCount());
+            case "Min" -> spherePointFunction = new NegativeMinR(problem.getPointCount());
         }
         this.positioner = new Positioner(spherePointFunction);
         this.positioner.setStepSize(Math.PI / 12);

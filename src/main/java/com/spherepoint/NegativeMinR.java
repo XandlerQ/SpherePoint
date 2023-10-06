@@ -9,7 +9,7 @@ public class NegativeMinR extends SpherePointFunction {
     private int closestSecondIndex;
 
     NegativeMinR() {
-        this.type = "Sphere";
+        this.type = "Min";
         this.parameterCount = 0;
         this.spherePoints = new ArrayList<>();
         this.closestFirstIndex = -1;
@@ -17,7 +17,7 @@ public class NegativeMinR extends SpherePointFunction {
     }
 
     NegativeMinR(ArrayList<SpherePoint> spherePoints) {
-        this.type = "Sphere";
+        this.type = "Min";
         this.parameterCount = 4;
         this.spherePoints = spherePoints;
         setFirstPoints();
@@ -25,7 +25,7 @@ public class NegativeMinR extends SpherePointFunction {
     }
 
     NegativeMinR(double[] phi, double[] omega) {
-        this.type = "Sphere";
+        this.type = "Min";
         this.parameterCount = 4;
         this.spherePoints = new ArrayList<>();
         for(int i = 0; i < phi.length; i++) {
@@ -36,7 +36,7 @@ public class NegativeMinR extends SpherePointFunction {
     }
 
     NegativeMinR(int pointCount) {
-        this.type = "Sphere";
+        this.type = "Min";
         this.parameterCount = 4;
         this.spherePoints = new ArrayList<>();
         for (int i = 0; i < pointCount; i++) {

@@ -6,20 +6,20 @@ public class Sum1OverR extends SpherePointFunction {
     private ArrayList<SpherePoint> spherePoints;
 
     Sum1OverR() {
-        this.type = "Sphere";
+        this.type = "1R";
         this.parameterCount = 0;
         this.spherePoints = new ArrayList<>();
     }
 
     Sum1OverR(ArrayList<SpherePoint> spherePoints) {
-        this.type = "Sphere";
+        this.type = "1R";
         this.parameterCount = spherePoints.size() * 2 - 3;
         this.spherePoints = spherePoints;
         setFirstPoints();
     }
 
     Sum1OverR(double[] phi, double[] omega) {
-        this.type = "Sphere";
+        this.type = "1R";
         this.parameterCount = phi.length * 2 - 3;
         this.spherePoints = new ArrayList<>();
         for(int i = 0; i < phi.length; i++) {
@@ -29,7 +29,7 @@ public class Sum1OverR extends SpherePointFunction {
     }
 
     Sum1OverR(int pointCount) {
-        this.type = "Sphere";
+        this.type = "1R";
         this.parameterCount = pointCount * 2 - 3;
         this.spherePoints = new ArrayList<>();
         for (int i = 0; i < pointCount; i++) {

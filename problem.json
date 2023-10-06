@@ -1,5 +1,5 @@
 {
-	"type" : "Sphere1",
+	"type" : "1R",
 	"dotCount" : 4,
 	"solver" : "HJ"
 }
