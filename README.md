@@ -1,2 +1,2 @@
 # SpherePoint
-Software for determining optimal point distribution on the surface of a sphere
+Software for determining optimal (as far from each other as possible) point distribution on the surface of a sphere.
