@@ -6,8 +6,11 @@
 
 The project includes two mathematical formulations for evaluating point configurations, both with gradient calculations:
 
-- **Negative Minimum Distance**: The target function is the negated value of the minimum distance between any two points. This leads to optimal results when minimized.
 - **Sum of Inverse Distances**: The sum of 1 / R_ij for all i ≠ j, where R_ij is the distance between points i and j.
+- **Negative Minimum Distance**: The target function is the negated value of the minimum distance between any two points. This leads to optimal results when minimized.
+
+![image](https://github.com/user-attachments/assets/3a145a57-8c6c-4c7d-a99d-94c9a434e558)
+
 
 ## Solver Methods
 
@@ -30,3 +33,7 @@ The optimization process can be visualized in real-time or post-completion using
 **20 Points – Regular Dodecahedron**
 
 ![opt20](https://github.com/user-attachments/assets/0994c7a0-c4b9-4932-8c9f-3c52cc131144)
+
+### UML Scheme
+
+![image](https://github.com/user-attachments/assets/537119e8-36df-4105-a176-58531bc90d84)
